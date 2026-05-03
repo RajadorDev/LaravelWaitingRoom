@@ -1,0 +1,105 @@
+
+@keyframes loading {
+    0% {
+        transform: translate(-50%, -50%) rotate(var(--start-rotation));
+        border-left-color: var(--loading-color-a);
+        border-right-color: var(--loading-color-b);
+    }
+
+    50% {
+        border-left-color: var(--loading-color-b);
+        border-right-color: var(--loading-color-a);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(var(--finish-rotation));
+        border-left-color: var(--loading-color-a);
+        border-right-color: var(--loading-color-b);
+    }
+}
+
+
+@keyframes loading-line {
+    0% {
+        transform-origin: right;
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    50.1% {
+        transform-origin: left;
+    }
+    
+    100% {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+}
+
+.loading-box {
+    width: 55px;
+    height: 55px;
+    position: relative;
+}
+
+.loading-box .loading-element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-box .loading-element-b {
+    --size: calc(55px / 2);
+}
+
+.loading-element {
+    background-color: transparent;
+    --size: 55px;
+    border: 4px solid;
+    border-radius: calc(var(--size) / 2);
+    height: var(--size);
+    width: var(--size);
+    animation-name: loading;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 500ms;
+    animation-duration: 1s;
+    border-color: transparent;
+}
+
+.loading-element-a {
+    --start-rotation: 0deg;
+    --finish-rotation: 360deg;
+    --loading-color-a: rgba(90, 90, 90, 0.767);
+    --loading-color-b: rgba(16, 88, 241, 0.767);
+}
+
+.loading-element-b {
+    --start-rotation: 360deg;
+    --finish-rotation: 0deg;
+    --loading-color-a: rgba(90, 90, 90, 0.767);
+    --loading-color-b: rgba(16, 88, 241, 0.767);
+}
+
+.loading-line-box {
+    width: 200px;
+    box-sizing: border-box;
+    height: 5px;
+}
+
+.loading-line {
+    height: 5px;
+    width: 100%;
+    background-color: rgb(74, 74, 241);
+    float: left;
+
+    animation-name: loading-line;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}

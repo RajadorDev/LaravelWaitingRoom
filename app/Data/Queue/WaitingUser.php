@@ -4,35 +4,29 @@ declare (strict_types=1);
 
 namespace App\Data\Queue;
 
-class WaitingUser 
+use App\Data\Utils\HeartbeatObject;
+
+class WaitingUser extends HeartbeatObject
 {
 
-    public function __construct(
-        public readonly int $userId,
-        protected float $lastHeartbeat
-    )
-    {}
+    public static function fromData(array $data): HeartbeatObject
+    {
+        return new self(
+            $data[self::DATA_ID],
+            $data[self::DATA_HEARTBEAT]
+        );
+    }
+
+    protected function serializeExtraData(): ?array
+    {
+        return null;
+    }
 
     public static function new(
         int $userId
     ) : WaitingUser
     {
         return new self($userId, microtime(true));
-    }
-
-    public function heartBeat() : void 
-    {
-        $this->lastHeartbeat = microtime(true);
-    }
-
-    public function getLastHeartBeatInterval() : float
-    {
-        return microtime(true) - $this->lastHeartbeat;
-    }
-
-    public function isExpired(float|int $maxTime) : bool 
-    {
-        return $this->getLastHeartBeatInterval() >= $maxTime;
     }
 
 }

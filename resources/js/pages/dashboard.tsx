@@ -1,8 +1,16 @@
 import { Head } from '@inertiajs/react';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import { dashboard } from '@/routes';
+import { tryToStartKeepAlive } from '@/services/user-limit-service';
+import { useEffect } from 'react';
 
 export default function Dashboard() {
+    useEffect(
+        () => {
+            tryToStartKeepAlive(1500);
+            return () => {}
+        }
+    );
     return (
         <>
             <Head title="Dashboard" />

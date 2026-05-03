@@ -18,8 +18,10 @@ createInertiaApp({
                 return AuthLayout;
             case name.startsWith('settings/'):
                 return [AppLayout, SettingsLayout];
+            case name.startsWith('queue/'):
+                return null;
             default:
-                return AppLayout;
+                return null;
         }
     },
     strictMode: true,

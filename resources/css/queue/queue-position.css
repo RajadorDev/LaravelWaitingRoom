@@ -1,0 +1,18 @@
+
+@keyframes animated-show {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+.queue-position {
+    font-size: 26px;
+    font-weight: bold;
+    animation-name: animated-show;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}

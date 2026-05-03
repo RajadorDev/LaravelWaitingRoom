@@ -1,0 +1,28 @@
+.queue-status {
+    background-color: white;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    color: rgb(63, 82, 255);
+    align-items: center;
+    justify-content: center;
+    padding: 30px 55px;
+    box-shadow: 4px 4px 5px 8px rgba(0, 0, 0, 0.075);
+    width: 75vw;
+    height: 80vh;
+}
+
+.queue-info-text {
+    color: rgb(87, 87, 87);
+    font-size: 24px;
+}
+
+.queue-status-title {
+    font-size: 35px;
+}
+
+.queue-target-name {
+    color: rgb(63, 82, 255);
+    font-weight: bold;
+}
