@@ -1,8 +1,6 @@
 
 var keepAliveStarted: boolean = false;
 
-
-
 async function keepAlive() : Promise<void> {
     const URL = import.meta.env.VITE_APP_URL + '/api/keepalive';
     const response = await fetch(URL);
