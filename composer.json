@@ -45,6 +45,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "composer install --no-dev --optimize-autoloader",
             "php artisan app:generate-key-if-not-exists",
+            "php artisan migrate --force",
             "npm install",
             "npm run build:ssr"
         ],
