@@ -34,7 +34,7 @@ composer run build
 
 ## Running the System ⚙️
 
-- Docker Deploy 🐳
+### Docker Deploy 🐳
 
 To **deploy** the system using Docker, simply run the command below:
 
@@ -44,7 +44,7 @@ docker-compose up --build
 
 And that's it — the system will install `nginx`, `php8.3`, `redis`, and start the `scheduler` responsible for maintaining the **keep alive** and the **queue heartbeat**.
 
-- Development 🧪
+### Development 🧪
 
 **Warning: 🚨**: You need to have Docker installed on your machine so it can install `Redis`, since it is also required for development!
 
