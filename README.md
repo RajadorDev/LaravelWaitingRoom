@@ -48,10 +48,14 @@ And that's it — the system will install `nginx`, `php8.3`, `redis`, and start 
 
 **Warning: 🚨**: You need to have Docker installed on your machine so it can install `Redis`, since it is also required for development!
 
-For a development environment, you can use the command:
+First, you need to change redis host from `.env` file:
+
+From `redis` to `'127.0.0.1'` value.
+
+Now you run this command:
 
 ```sh
-php artisan serve
+composer run dev
 ```
 
 And to run the Laravel `scheduler`, you will need to open another terminal instance and execute:
