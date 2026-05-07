@@ -1,0 +1,37 @@
+services:
+  waiting_room_laravel:
+    build: 
+      context: .
+      dockerfile: '/docker/php/Dockerfile'
+      target: waiting_room_laravel
+    container_name: waiting_room_laravel
+    image: waiting_room_laravel
+    
+  nginx:
+    build: 
+      context: .
+      dockerfile: '/docker/php/Dockerfile'
+      target: nginx_server
+    ports:
+      - "8000:80"
+    depends_on:
+      - waiting_room_laravel
+  redis:
+    image: redis:alpine
+  scheduler:
+    build: 
+      context: .
+      dockerfile: '/docker/php/Dockerfile'
+    image: waiting_room_laravel
+    command: 'bash /var/www/docker/php/scheduler/laravel.sh'
+    depends_on:
+      - redis
+  worker:
+    build: 
+      context: .
+      dockerfile: '/docker/php/Dockerfile'
+    image: waiting_room_laravel
+    command: 'php artisan queue:work --sleep=1 --tries=3'
+    depends_on:
+      - redis
+    
