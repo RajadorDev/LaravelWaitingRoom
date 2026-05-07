@@ -41,6 +41,13 @@
         }
     },
     "scripts": {
+        "build": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "composer install --no-dev --optimize-autoloader",
+            "php artisan app:generate-key-if-not-exists",
+            "npm install",
+            "npm run build:ssr"
+        ],
         "setup": [
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
